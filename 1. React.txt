@@ -1,0 +1,46 @@
+=========================
+1. What is React?
+=========================
+React is a JavaScript Libary for bulding user interface. 
+(user interface => website/app which we are see)
+React Allows us to create re-usable and reactive components consisting of 
+HTML+JavaScript+ and CSS.
+React is all about "Components"
+
+Vanila JavaScript:
+If we using plain JavaScript without any additional libraries like jQuery
+then it is called Vanilla JavaScript.
+	--- so it is not a React
+
+
+=========================
+2. What isComponents?
+=========================
+Component is Reusable building blocks in your user interface.
+Simply if we have same item with different data, which is just reapting.
+-----------
+
+<div class="thumbnile">
+<h1>santnau</h1>
+<p>16000</p>
+</div>
+
+<div class="thumbnile">
+<h1>Prakash</h1>
+<p>22000</p>
+</div>
+
+-----------
+That is exactly what Components are, Reusable building blocks 
+in our user interface.
+
+Components are just combination of HTML code and CSS code and 
+possibly JavaScript code for some logic.
+
+We can split our User interface in so many Components as our need.
+
+-------------------------
+Declarative
+-------------------------
+React uses something which is calle a Declarative apporoach for
+building these components.

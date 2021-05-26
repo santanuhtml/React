@@ -1,0 +1,28 @@
+=======================
+Installing ReactJS
+=======================
+1. node js
+   We need this Node js 
+   i.  to run this command 'npx create-react-app my-app' to create React App tool
+   ii. since node js allow JavaScript code outside of the Browser so during build
+       an applicatin to optimize our project we need it.
+
+[Node js is not directly related to React. It is just allow JavaScript code 
+outside of the Browser and so it is not we need for React code is 
+JavaScript code that runs in the browser.]
+
+Install node js from
+https://nodejs.org/en/
+
+
+2. Install Visual Studio Code 
+   setup:
+   (ii) view->appearance-> [uncheck]show status bar / Side bar (As we need)
+   (ii)  view->extensions->Prettier->Install
+   (iii) File->preference->settings-> search 'Format' -> 
+	    Editor:Default Formatter -> Prettier
+   (iv) View->extensions->Material Icon Theme -> Install
+ 
+
+
+https://github.com/facebook/create-react-app
