@@ -1,0 +1,48 @@
+
+src:
+  --> index.js 
+        //It is the first file to execute. [like index.html]
+
+	import ReactDOM from 'react-dom';
+	//Its brings all Mordern JavaScript features like Impot & Export
+
+	import './index.css';
+	//it bring CSS code form index.css file
+
+	import App from './App';
+	//It bring an component called 'APP' written in 'APP.js'
+	
+	ReactDOM.render(<App />, document.getElementById('root'));
+	//By this line we sent this component called APP in our single HTML File
+        //called index.html where call this id="root"
+
+     
+  --> APP.js
+	-------------
+
+	function App() {
+          return (
+            <div>
+              <h2>Let's get started! 101</h2>
+            </div>
+          );
+        }   
+
+        export default App;
+
+   	------------
+
+	Note:
+	In App.js file we see a HTML code runs under js code, this was possible using
+        a JSX, it is a special syntax intruduced by the React js.
+	
+
+public:
+   --> index.html
+       In React has single html file which is the end loaded by the browser here
+
+
+Note: 
+      
+       
+    
