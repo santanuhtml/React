@@ -1,0 +1,49 @@
+
+   To create new React project visit:
+   step1:
+   https://github.com/facebook/create-react-app
+   and copy this command
+   'npx create-react-app my-app'
+
+   step2:
+   and open default Command Prompt and type one by one:
+
+   cd desktop/
+   npx create-react-app react-app
+
+   step3:
+   After install type one by one:
+
+   cd react-app
+   npm start
+
+   Note:
+   cd desktop/ => because we create our first React project in our desktop
+   cd => Change Directories
+
+   step4:
+   After this localhost:3000 start itself
+   Drag the project in Visula studio and 
+   Terminal -> new Terminal
+
+   step5:
+   to run the project run into the termainal:
+   npm start
+   
+   [**This step during lerning React js
+   Here we have to run a command 'npm install' under the termainal because we add the 'package.json'
+   file which provided by the teacher. 	
+   npm install
+   ]
+
+
+
+
+
+
+react dom?
+npx and mpm?
+it is node pacage manager
+npx => If we want to execute a packge with out installing on our computer
+       and launch it then we can use npx
+npm => here we install entair package.
