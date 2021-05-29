@@ -1,0 +1,63 @@
+Component:
+
+*** Component name start with Upper caser.
+    in React start with lower case take like html elements and
+    in React start with Upper case take liek Component
+
+Component in React just a JavaScript function which returen
+the JSX code.
+
+It is best practice to crate a new file for a new component.
+duing a React project If we have 100s of component files, also
+it will be normal.
+
+To manage all component we may creat a 'component' folder under 'src' folder.
+but We don't move the App.js component file because it is special type of component
+Or we can say it is our root-component.
+
+
+Let we create component called 'ExpenseItems.js' under the component folder.
+
+Step1:
+ExpenseItems.js
+CODE:
+-------------------
+
+function ExpenseItem(){
+    return <h2>Expense Items!</h2>
+}
+export default ExpenseItem; 
+
+--------------------
+Step2:
+Now call it in App.js which is our root-component
+--------------------
+
+import ExpenseItem from './components/ExpenseItems';
+
+function App() {
+  return (
+    <div>
+      <h2>Let's get started.</h2>
+      <p>This is also visible</p>
+      <ExpenseItem></ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+
+--------------------
+Note:
+i.  First we connect this 'ExpenseItem' file using 'impornt'
+
+ii. To call this 'ExpenseItem' component under App.js file we just type
+-----------
+<ExpenseItem></ExpenseItem>
+-----------
+
+because in React start with Upper case take liek Component.
+but to call the 'App.js' the root-component under html.js file we use:
+-----------
+ReactDOM.render(<App />, document.getElementById('root'));
+-----------
