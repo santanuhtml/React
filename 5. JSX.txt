@@ -1,7 +1,6 @@
 JSX 
 JSX stands for JavaScript XML (HTML => XML)
-JSX is basically HTML code inside the JavaScript code. basically Html code did not run
-in JavaScript in that way. 
+JSX is basically HTML code inside the JavaScript code. 
 JSX convert/transform this HTML code in to js code so that it will run in the browser.
 
 For example in Basic JavaScript we need to type:
@@ -21,3 +20,19 @@ function App() {
     </div>
   );
 }
+
+*** Note:
+<div>
+   <p>This is also visible</p>
+</div>
+
+This above piece of cade looks like a Html code but it is not a html code. It is
+JSX Code. so if we plan to add some class the we will add using 'className'
+Example:
+
+<div className="text-style">
+   <p>This is also visible</p>
+</div>
+
+
+
