@@ -1,0 +1,55 @@
+7. Complex Component
+
+** Under Component we have to one root element under per return statement 
+   otherwise it gives an error.
+
+   Example with Error:
+   --------------------
+
+   function ExpenseItem(){
+    return (
+        <div>Date</div>
+        <div>Title</div>
+      );
+    }
+    export default ExpenseItem;
+
+   --------------------
+   Note: here has tow root element called <div></div> so it gives error!
+         because it is not allow.
+         
+   Solve:
+         To solve this we can wrapp the code with another <div></div> like parent div.
+
+   Example with Correction:
+   --------------------
+   function ExpenseItem(){
+    return (
+        <div>
+            <div>Date</div>
+            <div>Title</div>
+        </div>
+      );
+   }
+   export default ExpenseItem;
+   --------------------
+
+
+  Example with Correction 2:
+  --------------------
+  function ExpenseItem(){
+    return (
+        <div>
+            <div>25th May 2021</div>
+            <div>
+                <h2>Course Fees</h2>
+                <p>₹ 384</p>
+            </div>
+        </div>
+      );
+   }
+  export default ExpenseItem;
+  --------------------
+
+
+
