@@ -3,3 +3,21 @@ JSX stands for JavaScript XML (HTML => XML)
 JSX is basically HTML code inside the JavaScript code. basically Html code did not run
 in JavaScript in that way. 
 JSX convert/transform this HTML code in to js code so that it will run in the browser.
+
+For example in Basic JavaScript we need to type:
+
+function App(){
+const para = document.createElement('p');
+para.textContent = 'Ths is also vidible';
+document.getElementById('root').append(para);
+}
+
+but in React js
+
+function App() {
+  return (
+    <div>
+      <p>This is also visible</p>
+    </div>
+  );
+}
