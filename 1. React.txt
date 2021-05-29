@@ -1,9 +1,11 @@
 =========================
 1. What is React?
 =========================
-React is a JavaScript Libary for bulding user interface. 
-(user interface => website/app which we are see)
-React Allows us to create re-usable and reactive components consisting of 
+React is a JavaScript Libary for bulding user interface. (user interface => website/app which we are see)
+With the React, we build single page application becatuse in React project has single html, means
+only one HTML file is delivered to the browser but in this single html file we import all react application
+
+React Allows us to create re-usable and reactive components which contain
 HTML+JavaScript+ and CSS.
 React is all about "Components"
 
