@@ -14,6 +14,14 @@ JavaScript code that runs in the browser.]
 Install node js from
 https://nodejs.org/en/
 
+NOTE:
+   I.  If we install node first time then to check 
+       node properlay install OR to check node version type:
+       node -v
+
+   II. to check npn virson type:
+       npm -v
+
 
 2. Install Visual Studio Code 
    setup:
