@@ -2,7 +2,7 @@ Component:
 
 *** Component name start with Upper caser.
     in React start with lower case take like html elements and
-    in React start with Upper case take liek Component
+    in React start with Upper case take like Component
 
 Component in React just a JavaScript function which returen
 the JSX code.
