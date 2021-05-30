@@ -61,3 +61,30 @@ but to call the 'App.js' the root-component under html.js file we use:
 -----------
 ReactDOM.render(<App />, document.getElementById('root'));
 -----------
+
+Now we can also reapt our 
+<ExpenseItem></ExpenseItem> component.
+-----------
+
+import ExpenseItem from './components/ExpenseItems';
+
+function App() {
+  return (
+    <div>
+      <h2>Let's get started.</h2>
+      <p>This is also visible</p>
+      <ExpenseItem></ExpenseItem>
+      <ExpenseItem></ExpenseItem>
+      <ExpenseItem></ExpenseItem>
+      <ExpenseItem></ExpenseItem>
+      <ExpenseItem></ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+
+-----------
+
+
+
