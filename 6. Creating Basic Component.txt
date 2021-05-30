@@ -85,6 +85,7 @@ function App() {
 export default App;
 
 -----------
-
+But in this type of repitation we get only static fixed data.
+we will get different dynamic deta using Props.
 
 
