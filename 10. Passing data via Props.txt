@@ -1,0 +1,96 @@
+In React we can make our components reusable by using Parameters, [ function sum(para1,para2) ]
+and a concept called PROPS. PROPS is one type of Properties.
+
+Using Props the Data should not be store inside of the Component but can received from outside.
+In ExpenseItem.js we don't keep data. we keep data Where the Component 'ExpenseItem' repeat, and that is 'App.js
+'
+ExpenseItem.js
+--------------------
+
+import './ExpenseItem.css';
+function ExpenseItem(props){
+
+    // const expenseDate = new Date(2021, 2, 28);
+    // const expenseTitle = 'Course Fee';
+    // const expenseAmount = 384;
+
+    return (
+        <div className="expense-item">
+            <div>{props.date.toISOString()}</div>
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">₹ {props.amount}</div>
+            </div>
+        </div>
+      );
+}
+export default ExpenseItem;
+
+--------------------
+In ExpenseItem.js we do not store data in it. to make all component dynamic and reusable 
+we keep all data outside of the component. We keep all data where the component are call for
+reapet.
+Here we repeat our 'ExpenseItem' component in 'App.js' file so we keep data in there.
+
+App.js
+--------------------
+
+import ExpenseItem from './components/ExpenseItems';
+
+function App() {
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', 
+      title: 'New TV', 
+      amount: 799.49, 
+      date: new Date(2021, 2, 12) 
+    },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ]
+
+  return (
+    <div>
+      <h2>Let's get started.</h2>
+      <p>This is also visible</p>
+      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}></ExpenseItem>
+      <ExpenseItem 
+      title={expenses[1].title} 
+      amount={expenses[1].amount} 
+      date={expenses[1].date}>
+      </ExpenseItem>
+      <ExpenseItem 
+      title={expenses[2].title} 
+      amount={expenses[2].amount} 
+      date={expenses[2].date}>
+      </ExpenseItem>
+      <ExpenseItem 
+      title={expenses[3].title} 
+      amount={expenses[3].amount} 
+      date={expenses[3].date}>
+      </ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+
+--------------------
+
+We can make our Component truly reusable and configurable by using this Props concept
+
