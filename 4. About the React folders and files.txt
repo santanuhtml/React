@@ -1,7 +1,7 @@
 
 src:
   --> index.js 
-        //It is the first file to execute. [like index.html]
+        //It is the first file to execute.
 
 	import ReactDOM from 'react-dom';
 	//Its brings all Mordern JavaScript features like Impot & Export
