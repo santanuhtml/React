@@ -61,7 +61,7 @@ add the newly created component 'ExpenseDate'.
 ExpenseItem.js
 --------------
 
-import ExpenseDate from './ExpenseItems';  //***call the component ExpenseDate.js
+import ExpenseDate from './ExpenseDate';  //***call the component ExpenseDate.js
 import './ExpenseItem.css';
 function ExpenseItem(props){
     return (
