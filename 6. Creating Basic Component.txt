@@ -11,12 +11,12 @@ It is best practice to crate a new file for a new component.
 duing a React project If we have 100s of component files, also
 it will be normal.
 
-To manage all component we may creat a 'component' folder under 'src' folder.
+To manage all component we may creat a 'components' folder under 'src' folder.
 but We don't move the App.js component file because it is special type of component
 Or we can say it is our root-component.
 
 
-Let we create component called 'ExpenseItems.js' under the component folder.
+Let we create component called 'ExpenseItems.js' under the []components folder.
 
 Step1:
 ExpenseItems.js
