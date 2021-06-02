@@ -1,0 +1,80 @@
+﻿In React Project we split our project code using component to manage
+our project. so to if our component also have many sections then we 
+can also split our component to other component. It is not necessary OR
+hard rule but we can do it as our need & Experiance.
+
+Example:
+----------
+
+import './ExpenseItem.css';
+function ExpenseItem(props){
+    const month = props.date.toLocaleString('en-US', {month: 'long'});
+    const day = props.date.toLocaleString('en-US', {day: '2-digit'});
+    const year = props.date.getFullYear();
+
+    return (
+        <div className="expense-item">
+            <div>
+                <div>{month}</div>
+                <div>{year}</div>
+                <div>{day}</div>
+            </div>
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">₹ {props.amount}</div>
+            </div>
+        </div>
+      );
+}
+export default ExpenseItem;
+
+-------------
+ExpenseItem.js component we have Date, title, and amount sections.
+For date we have to take some of const also. so to manage those code
+easily we can also split Date section form the 'ExpenseItem' Component.
+
+Now we will split it. for this we have to crate another file called
+'ExpenseDate.js' under the folder []components and cut the code form
+'ExpenseItem.js'.
+
+ExpenseDate.js
+--------------
+
+function ExpenseDate(){
+    const month = props.date.toLocaleString('en-US', {month: 'long'});
+    const day = props.date.toLocaleString('en-US', {day: '2-digit'});
+    const year = props.date.getFullYear();
+    return (
+        <div>
+            <div>{month}</div>
+            <div>{year}</div>
+            <div>{day}</div>
+        </div>
+    )
+}
+export default ExpenseDate;
+
+--------------
+After this we will connect this Component to our 'ExpenseItem.js' file and 
+add the newly created component 'ExpenseDate'.
+
+ExpenseItem.js
+--------------
+
+import ExpenseDate from './ExpenseItems';  //***call the component ExpenseDate.js
+import './ExpenseItem.css';
+function ExpenseItem(props){
+    return (
+        <div className="expense-item">
+            <ExpenseDate></ExpenseDate>   //*** Adding the newly created component 'ExpenseDate'.
+
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">₹ {props.amount}</div>
+            </div>
+        </div>
+      );
+}
+export default ExpenseItem;
+
+-------------
