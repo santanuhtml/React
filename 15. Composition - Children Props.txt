@@ -1,0 +1,129 @@
+15. Composition - Children Props
+
+In our project some of our some code like HTML & CSS repeat so many times.
+like Card, section, etc. We will make those line of code or peace of code
+reusable called Composition. And this type of Composition works like a SHELL.
+
+In this basic project we  repeat 'box-shodow' and 'border-radius' many time.
+So we will make theme reusable using 'Card.js'
+
+We will crate a file called 'Card.js' and 'Card.css'  under folder []components
+
+Card.js
+-----------------------
+import './Card.css';
+function Card(){
+    return(
+        <div className="card"></div>
+    );
+}
+export default Card;
+
+-----------------------
+
+Card.css
+-----------------------
+.card{
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+-----------------------
+** Since we bring repetable code 'border-radius' and 'box-shadow' to make 
+them Reusable, so we remove OR comment those code form 
+'Expenses.css' and 'ExpenseItem.css'.
+
+
+Now in 'ExpenseItem.js' file we will apply this 'Card' composition
+
+'ExpenseItem.js'
+-----------------------
+import ExpenseDate from './ExpenseDate';  
+import Card from './Card';               /* link Card composition */
+import './ExpenseItem.css';
+
+function ExpenseItem(props){
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+
+----------------------
+After Run this we will se this code is not working properly!
+So here we again introduct Props with out any attributes.
+
+
+
+
+Card.js
+---------------------
+import './Card.css';
+
+function Card(props){
+    const classes = 'card ' + props.className;
+    return <div className={classes}>{props.children}</div>;
+}
+export default Card;
+
+--------------------
+Note:
+
+1. props.children => is the content between the <Card>...</Card>
+
+2. To connect className 'card' and 'expense-item' we add
+
+   -------------------------------------------
+   const classes = 'card ' + props.className;
+   -------------------------------------------
+
+   because some of code have class 'card' and some of code have 'expense-item'.
+
+   *** *** *** Give the space => 'card '
+ 
+
+
+--------------------
+Also we apply <Card> in 'Expenses.js' page
+
+Expenses.js
+--------------------
+
+import ExpenseItem from './ExpenseItems';
+import Card from './Card'; 			/* link Card composition */
+import  './Expenses.css';
+function Expenses(props){
+    return (
+        <Card className="expenses">
+            <ExpenseItem 
+            title={props.items[0].title} 
+            amount={props.items[0].amount} 
+            date={props.items[0].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[1].title} 
+            amount={props.items[1].amount} 
+            date={props.items[1].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[2].title} 
+            amount={props.items[2].amount} 
+            date={props.items[2].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[3].title} 
+            amount={props.items[3].amount} 
+            date={props.items[3].date}>
+            </ExpenseItem>
+        </Card>
+    );
+}
+export default Expenses;
+
