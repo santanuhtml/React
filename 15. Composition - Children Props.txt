@@ -131,7 +131,7 @@ export default Expenses;
 =======================================
 ---------------------------------------
 Note: Add this code in every components:
-      It is not important but Add this
+      It is not technically need but Add this
       
 ---------------------------------------
 import React from 'react';
