@@ -1,0 +1,113 @@
+13. Passing data via Props II (Explain)
+
+Here we see that we are passing DATA 'date' from A to C via B 
+because that's how Props work. We pass data from a component [A] to a 
+direct child component [C] and if any component place between them [B] 
+then we can't skip this component.
+
+So, here if we want to pass DATA date from App.js [A] to ExpenseDate.js  [C]
+then we first pass this data DATA form ExpenseItems.js  [B] using
+<ExpenseDate date={props.date}></ExpenseDate>   
+
+
+App.js [A]
+-------------------
+
+import ExpenseItem from './components/ExpenseItems';
+
+function App() {
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', 
+      title: 'New TV', 
+      amount: 799.49, 
+      date: new Date(2021, 2, 12) 
+    },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ]
+
+  return (
+    <div>
+      <h2>Let's get started.</h2>
+      <p>This is also visible</p>
+      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}></ExpenseItem>
+      <ExpenseItem 
+      title={expenses[1].title} 
+      amount={expenses[1].amount} 
+      date={expenses[1].date}>
+      </ExpenseItem>
+      <ExpenseItem 
+      title={expenses[2].title} 
+      amount={expenses[2].amount} 
+      date={expenses[2].date}>
+      </ExpenseItem>
+      <ExpenseItem 
+      title={expenses[3].title} 
+      amount={expenses[3].amount} 
+      date={expenses[3].date}>
+      </ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+
+-------------------
+
+
+ExpenseItems.js  [B]
+-------------------
+
+import ExpenseDate from './ExpenseDate';  
+import './ExpenseItem.css';
+function ExpenseItem(props){
+    return (
+        <div className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+        </div>
+      );
+}
+export default ExpenseItem;
+
+-------------------
+
+
+ExpenseDate.js  [C]
+-------------------
+
+import './ExpenseDate.css';
+function ExpenseDate(props){
+    const month = props.date.toLocaleString('en-US', {month: 'long'});
+    const day = props.date.toLocaleString('en-US', {day: '2-digit'});
+    const year = props.date.getFullYear();
+    return (
+        <div className="expense-date">
+            <div className="expense-date__month">{month}</div>
+            <div className="expense-date__year">{year}</div>
+            <div className="expense-date__day">{day}</div>  
+        </div>
+    )
+}
+export default ExpenseDate;
+
+-------------------
