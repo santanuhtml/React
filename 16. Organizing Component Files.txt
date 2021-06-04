@@ -1,0 +1,50 @@
+16. Organizing Component Files
+
+In React js Project there has possible to have lots of Components and
+so we can manage those as our need in separated folders. For Example
+we can separate UI related component like 'Card' in UI folder.
+
+In this Project We separate All component into two folders
+[]UI and []Expenses
+
+We keep 'Card.js' and  'Card.css' in the folder []UI
+And other all components in []Expenses
+
+After separate all component as our need we have to also
+correct the links.
+
+Here we have to correct 
+
+'Expenses.js'
+--------------------
+import Card from '../UI/Card';
+
+
+'ExpenseItem.css'
+--------------------
+import Card from '../UI/Card'; 
+
+
+'App.js'
+--------------------
+import Expenses from './components/Expenses/Expenses';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
