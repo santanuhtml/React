@@ -1,0 +1,26 @@
+17. Arrow Function
+
+
+1. 'App.js'
+--------------
+
+function App() {
+}
+
+TO
+
+const App = () => {
+}
+
+
+--------------
+2. 'ExpenseDate.JS'
+--------------
+
+function ExpenseDate(props){
+}
+
+TO
+
+const ExpenseDate = (props) =>{
+}
