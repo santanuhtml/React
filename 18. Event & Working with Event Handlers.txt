@@ -1,0 +1,119 @@
+18. Event & Working with Event Handlers
+
+1. 
+Now we lern how to use <button></button> and its Event & Event Handlers.
+Here an event call after on + Event name (Start with Capital)
+Example:
+onClick
+
+----------------
+
+<button onClick={() => {}}>Change Title</button>
+
+----------------
+Note:
+Under button we use onClick event and user a function under it.
+
+Now the button code using onClick event
+--------------- 
+<button onClick={() => {console.log('clicked!')}}>Change Title</button>
+---------------
+Note: On click the btn 'onClick' event generate. we can check it in console 
+
+'ExpenseItem.js'
+---------------------
+
+import React from 'react';
+import ExpenseDate from './ExpenseDate';  
+import Card from '../UI/Card'; 
+import './ExpenseItem.css';
+
+const ExpenseItem = (props) => {
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+            <button onClick={() => {console.log('clicked!')}}>Change Title</button>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+---------------------
+Note: 
+Check it on console.
+
+
+Now If we keep our onClick code under this line it will be
+large so that create another function for this onClick event.
+
+
+'ExpenseItem.js'
+--------------------
+
+import React from 'react';
+import ExpenseDate from './ExpenseDate';  
+import Card from '../UI/Card'; 
+import './ExpenseItem.css';
+
+const ExpenseItem = (props) => {
+
+    const clickHandler = () => {
+        console.log('clicked !!!');
+    }
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+            <button onClick={clickHandler}>Change Title</button>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+-------------------
+Note: 
+Check it on console.
+
+-------------------
+
+2. Now we try to change the valu of title
+
+-------------------
+
+import React from 'react';
+import ExpenseDate from './ExpenseDate';  
+import Card from '../UI/Card'; 
+import './ExpenseItem.css';
+
+const ExpenseItem = (props) => {
+
+    let title = props.title
+    const clickHandler = () => {
+        title = 'Updated!!';
+        console.log(title);
+    }
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+            <button onClick={clickHandler}>Change Title</button>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+-------------------
+Note:
+Here we see that Title is not change! but 
+in console we can see is working fine.
+So to change title we need to take help of 'State'.
