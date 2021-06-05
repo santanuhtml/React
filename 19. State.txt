@@ -1,0 +1,120 @@
+19. State
+
+If we have data, which might need to change and disply on user interface 
+the we need State.
+
+In general in a React function we can't change any value just
+add any variable like this
+
+title = 'Updated!!';
+
+because this value comes form 'props'
+
+Now to change this value we need help of State
+
+First we need to connect 'useState' hook for this we use
+----------------------
+import React, {useState} from 'react';
+----------------------
+
+Now we have to call this hook under directly React component [not out side
+the component OR inside of any function which is placed in any React Component].
+given example:
+
+'ExpenseItem.js'
+---------------------
+
+import React, {useState} from 'react';  /* link the useState */
+import ExpenseDate from './ExpenseDate';  
+import Card from '../UI/Card'; 
+import './ExpenseItem.css';
+
+/*can't call it useState(); here*/
+
+const ExpenseItem = (props) => {
+
+    useState(); /* calling state hook */
+
+    let title = props.title
+    const clickHandler = () => {
+        /*can't call it useState(); here*/
+        title = 'Updated!!';
+        console.log(title);
+    }
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+            <button onClick={clickHandler}>Change Title</button>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+---------------------
+
+Here don't need to Run this because it is not ready!
+
+Now 
+useState() gives two value first one is Actual value and another one is
+updated value.
+
+---------------------
+const [title, setTitle] = useState(props.title);
+---------------------
+
+'ExpenseItem.js'
+---------------------
+
+import React, {useState} from 'react'; /* link the useState */
+import ExpenseDate from './ExpenseDate';  
+import Card from '../UI/Card'; 
+import './ExpenseItem.css';
+
+const ExpenseItem = (props) => {
+
+    const [title, setTitle] = useState(props.title); /* calling state hook */
+
+    const clickHandler = () => {
+        setTitle('Updated!');
+        console.log(title);
+    }
+    return (
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>   
+            <div className="expense-item__description">
+                <h2>{title}</h2>
+                <div className="expense-item__price">? {props.amount}</div>
+            </div>
+            <button onClick={clickHandler}>Change Title</button>
+        </Card>
+      );
+}
+export default ExpenseItem;
+
+---------------------
+Now we can see those valu are updated.
+
+So If we have data, which might need to change and disply on user interface 
+the we need State.
+
+Note: State is Separated on a per component so every button updated when they are clicked
+separately.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
