@@ -1,0 +1,227 @@
+In this project we need to add some data to view. 
+for this we will create another folder called 'NewExpense'
+under []components.
+
+Under [] NewExpense we create new file called 'NewExpense.js'  
+and
+Under [] NewExpense we create new file called 'NewExpense.css'
+
+
+NewExpense.js
+------------------
+
+import React from 'react';
+import  './NewExpense.css';
+const NewExpense = () =>{
+  return(
+        <div className="new-expense">
+          <form></form>
+        </div>
+  );
+}
+
+export default NewExpense;
+
+------------------
+
+
+NewExpense.css
+------------------
+.new-expense {
+    background-color: #a892ee;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .new-expense button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #40005d;
+    background-color: #40005d;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+  }
+  
+  .new-expense button:hover,
+  .new-expense button:active {
+    background-color: #510674;
+    border-color: #510674;
+  }
+  
+  .new-expense button.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .new-expense button.alternative:hover,
+  .new-expense button.alternative:active {
+    background-color: #ddb3f8;
+  }
+
+
+------------------
+
+Note:
+Now we will keep all form related data in another file called 'ExpenseForm.js' and 
+we also crate another css file for ExpenseForm.js called 'ExpenseForm.css'
+
+
+ExpenseForm.js
+------------------
+
+import React from 'react';
+import  './ExpenseForm.css';
+
+const ExpenseForm = () =>{
+    return(
+        <form>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type="text" />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type="number" min="0.01" step="0.01" />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type="date" min="2019-01-01" max="2022-12-31"/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
+            </div>
+        </form>
+    );
+};
+export default ExpenseForm;
+
+------------------
+
+ExpenseForm.css
+
+------------------
+
+.new-expense__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .new-expense__control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .new-expense__control input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+  
+  .new-expense__actions {
+    text-align: right;
+  }
+
+
+------------------
+
+Note: Now we have to link 'ExpenseForm.js' file in our
+      'NewExpense.js' and we have to call the component <ExpenseForm/>
+
+
+NewExpense.js
+------------------
+
+import React from 'react';
+import ExpenseForm from './ExpenseForm';
+import  './NewExpense.css';
+const NewExpense = () =>{
+  return(
+        <div className="new-expense">
+          <ExpenseForm />
+        </div>
+  );
+}
+
+export default NewExpense;
+
+------------------
+
+Finaly we will ADD this 'NewExpense.js' component for Form
+in our 'App.js' file.
+Add the link
+Add the Component
+
+
+'App.js'
+------------------
+
+import React from 'react';
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
+
+function App() {
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', 
+      title: 'New TV', 
+      amount: 799.49, 
+      date: new Date(2021, 2, 12) 
+    },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ]
+
+  return (
+    <div>
+      <h2>Let's get started.</h2>
+      <p>This is also visible</p>
+      <NewExpense />
+      <Expenses items={expenses}></Expenses>
+    </div>
+  );
+}
+
+export default App;
+
+------------------
+
+
+
+
+
+  
+
+
+
