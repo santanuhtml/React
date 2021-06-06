@@ -1,2 +1,51 @@
 Basic-React
 -------------------
+
+Basic link to attach every 'ComponentName.js' file
+
+import React from 'react';
+
+-------------------
+Calling CSS in component
+
+import  './ComponentName.css';
+
+-------------------
+
+Basic Component:
+
+import React from 'react';
+import  './ComponentName.css';
+
+const ComponentName = () =>{
+  returen(
+        <div>
+        </div>
+  );
+};
+export default ComponentName;
+
+
+------------------
+Link a Component to another Component
+
+import ComponentName2 from './ComponentName2';
+
+Example:
+ComponentName1.js
+--------
+
+import React from 'react';
+import ComponentName2 from './ComponentName2';
+import  './ComponentName1.css';
+const NewExpense = () =>{
+  return(
+        <div className="new-expense">
+          <ComponentName2 />
+        </div>
+  );
+};
+
+export default ComponentName1;
+
+--------
