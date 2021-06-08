@@ -94,6 +94,7 @@ We need to get 'expenseData' Object data under the props 'onSaveExpenseData' usi
 ----------
 props.onSaveExpenseData(expenseData);
 ---------
+We Just Pass DATA 'expenseData' From The Function onSaveExpenseData()
 
 which is already called under the component <ExpenseForm/> in 'NewExpense.js'
 
@@ -279,6 +280,7 @@ We need to get 'expenseData' Object data under the props 'onAddExpense' using
 ----------
 props.onAddExpense(expenseData);
 ---------
+We Just Pass DATA 'expenseData' From The Function onAddExpense()
 
 FULL UPDATED CODE
 NewExpense.js
