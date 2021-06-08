@@ -1,0 +1,286 @@
+21. Form with State
+--------------------------
+
+ExpenseForm.js
+--------------------------
+
+import React from 'react';
+import  './ExpenseForm.css';
+
+
+const ExpenseForm = () =>{
+
+    const titleChangeHandler = (event) => {
+        console.log(event.target.value);
+    }
+
+    return(
+        <form>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type="text" onChange={titleChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type="number" min="0.01" step="0.01" />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type="date" min="2019-01-01" max="2022-12-31"/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
+            </div>
+        </form>
+    );
+};
+export default ExpenseForm;
+
+--------------------------
+
+We can Now run it and see the changes in console.
+
+Note:
+1. In Input we use a Prop called 'onChange' which trigger on every keystroke.
+   The advantage of 'onChange' is we can use it for all input types.
+
+2. On 'onChange' paranthesis {} we add a function called 'titleChangeHandler'
+   under which we get the input value using default 'event' object
+
+
+
+============================
+Now again we will use State property during setup a form
+Here we work with ***'Multiple State'***
+---------------------------
+
+ExpenseForm.js
+---------------------------
+
+import React, {useState} from 'react';
+import  './ExpenseForm.css';
+
+
+const ExpenseForm = () =>{
+
+    const [enteredTitle, setEnteredTitle ] = useState('');
+    const [enteredAmount, setEnteredAmount ] = useState('');
+    const [enteredDate, setEnteredDate ] = useState('');
+
+    const titleChangeHandler = (event) => {
+        setEnteredTitle(event.target.value);
+    }
+
+    const amounChangeHandler = (event) => {
+        setEnteredAmount(event.target.value);
+    }
+
+    const dateChangeHandler = (event) =>{
+        setEnteredDate(event.target.value);
+    }
+
+    return(
+        <form>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type="text" onChange={titleChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type="number" min="0.01" step="0.01" onChange={amounChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler}/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
+            </div>
+        </form>
+    );
+};
+export default ExpenseForm;
+
+
+---------------------------
+Step1:
+First we add {useState} to add State Property.
+
+Step2:
+We use blank useState => useState('')
+Blank useState because we don't set any valu for this
+and we use '' because we want to get 'string' value from this.
+
+Step3:
+We create a function called 'titleChangeHandler' and we also call
+this under 'onChange'
+
+Step4:
+Under the function 'titleChangeHandler' we get the value from the
+input.
+
+
+Now we will collect all data in an Object called 'expenseData'
+
+
+ExpenseForm.js
+---------------------------
+
+import React, {useState} from 'react';
+import  './ExpenseForm.css';
+
+
+const ExpenseForm = () =>{
+
+    const [enteredTitle, setEnteredTitle ] = useState('');
+    const [enteredAmount, setEnteredAmount ] = useState('');
+    const [enteredDate, setEnteredDate ] = useState('');
+
+    const titleChangeHandler = (event) => {
+        setEnteredTitle(event.target.value);
+    }
+
+    const amounChangeHandler = (event) => {
+        setEnteredAmount(event.target.value);
+    }
+
+    const dateChangeHandler = (event) =>{
+        setEnteredDate(event.target.value);
+    }
+
+    const submitHandler = (event) =>{
+        event.preventDefault(); /* It is sending Request for not to load the browser */
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+        console.log(expenseData);
+    };
+
+    return(
+        <form onSubmit={submitHandler}>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type="text" onChange={titleChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type="number" min="0.01" step="0.01" onChange={amounChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler}/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
+            </div>
+        </form>
+    );
+};
+export default ExpenseForm;
+
+---------------------------
+
+Note: after submit data we can see in console that the all data are collected
+
+---------------------------
+
+
+After this Now we will clean our input data form our form.
+ExpenseForm.js
+---------------------------
+
+import React, {useState} from 'react';
+import  './ExpenseForm.css';
+
+
+const ExpenseForm = () =>{
+
+    const [enteredTitle, setEnteredTitle ] = useState('');
+    const [enteredAmount, setEnteredAmount ] = useState('');
+    const [enteredDate, setEnteredDate ] = useState('');
+
+    const titleChangeHandler = (event) => {
+        setEnteredTitle(event.target.value);
+    }
+
+    const amounChangeHandler = (event) => {
+        setEnteredAmount(event.target.value);
+    }
+
+    const dateChangeHandler = (event) =>{
+        setEnteredDate(event.target.value);
+    }
+
+    const submitHandler = (event) =>{
+        event.preventDefault(); /* It is sending Request for not to load the browser */
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+        console.log(expenseData);
+
+        /* Clear input set Data */
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
+    };
+
+    return(
+        <form onSubmit={submitHandler}>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type="number" min="0.01" step="0.01" value={enteredAmount} onChange={amounChangeHandler} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type="date" min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandler}/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
+            </div>
+        </form>
+    );
+};
+export default ExpenseForm;
+
+---------------------------
+
+Step1:
+We add 'value' attribut in all input filds and in paranthesis {} we add 
+first vale form  useState('');
+Here our fast value of title is 'enteredTitle' 
+code:
+------
+const [enteredTitle, setEnteredTitle ] = useState('');
+------
+so we use
+code:
+------
+<input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+------
+
+Step2:
+We clean all Second value from useState(''); which is a set Data.
+here our second value is 'setEnteredTitle' 
+so we clean it
+Code:
+-----
+setEnteredTitle('');
+-----
