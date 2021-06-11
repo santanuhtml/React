@@ -1,0 +1,348 @@
+23. Filter with Dropdown
+
+For this we need to create another Component file called
+'ExpenseFilter.js' and 'ExpenseFilter.css' file under 
+the folder []Expenses
+
+
+'ExpenseFilter.js'
+----------------------
+
+import React from 'react';
+import  './ExpenseFilter.css';
+
+const ExpenseFilter = () =>{
+
+    const dropdownChangeHandler = (event) => {
+        console.log(event.target.value);
+    }
+
+  return(
+        <div>
+            <select onChange={dropdownChangeHandler}>
+                <option value='2022'>2022</option>
+                <option value='2021'>2021</option>
+                <option value='2020'>2020</option>
+                <option value='2019'>2019</option>
+                <option value='2018'>2018</option>
+            </select>
+        </div>
+  );
+};
+export default ExpenseFilter;
+
+----------------------
+Note: 
+1. Using onChnage Props under the <select /> we trigger the function 'dropdownChangeHandler'
+-------
+<select onChange={dropdownChangeHandler}>
+-------
+
+2. Now 'dropdownChangeHandler' function display the selected option using console
+------
+const dropdownChangeHandler = (event) => {
+        console.log(event.target.value);
+    }
+-----
+
+
+Now We need to call this Componenet  <ExpenseFilter /> in 
+'Expenses.js' file to preview
+
+
+'Expenses.js'
+----------------------
+
+import React from 'react';
+import ExpenseItem from './ExpenseItems';
+import ExpenseFilter from './ExpenseFilter';
+import Card from '../UI/Card';
+import  './Expenses.css';
+function Expenses(props){
+    return (
+        <div>
+            <Card className="expenses">
+            <ExpenseFilter />
+            <ExpenseItem 
+            title={props.items[0].title} 
+            amount={props.items[0].amount} 
+            date={props.items[0].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[1].title} 
+            amount={props.items[1].amount} 
+            date={props.items[1].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[2].title} 
+            amount={props.items[2].amount} 
+            date={props.items[2].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[3].title} 
+            amount={props.items[3].amount} 
+            date={props.items[3].date}>
+            </ExpenseItem>
+        </Card>
+    </div>
+    );
+}
+export default Expenses;
+
+----------------------
+
+Now we can see the selected year in our console.
+It is the Basic step.
+
+
+Now we will get Selected Option data from 
+
+ExpenseFilter.js -->  'Expenses.js'  Using Props Concept.
+
+STEP1:
+
+In 'Expenses.js' file under the component <ExpenseFilter/> 
+we crate a Props called 'onChnageFilter' under which we call a function called 'filterChangeHandler'.
+---------
+<ExpenseFilter onChnageFilter={filterChangeHandler} />
+--------
+
+Now we crate the function filterChangeHandler
+--------
+
+/* Filter CODE  */
+    const filterChangeHandler = (selectedYear) => {
+        console.log('Expenses.js');
+        console.log(selectedYear);
+  }
+
+------
+
+FULL CODE:
+
+Expenses.js
+-------------------------
+
+import React from 'react';
+import ExpenseItem from './ExpenseItems';
+import ExpenseFilter from './ExpenseFilter';
+import Card from '../UI/Card';
+import  './Expenses.css';
+function Expenses(props){
+
+    /* Filter CODE  */
+    const filterChangeHandler = (selectedYear) => {
+        console.log('Expenses.js');
+        console.log(selectedYear);
+    }
+
+    return (
+        <div>
+            <Card className="expenses">
+            <ExpenseFilter onChnageFilter={filterChangeHandler} />
+            <ExpenseItem 
+            title={props.items[0].title} 
+            amount={props.items[0].amount} 
+            date={props.items[0].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[1].title} 
+            amount={props.items[1].amount} 
+            date={props.items[1].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[2].title} 
+            amount={props.items[2].amount} 
+            date={props.items[2].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[3].title} 
+            amount={props.items[3].amount} 
+            date={props.items[3].date}>
+            </ExpenseItem>
+        </Card>
+    </div>
+    );
+}
+export default Expenses;
+
+-------------------------
+
+
+STEP2:
+
+i.
+Since we use Props to transfer data we need to add 'props' parameter in
+ExpenseFilter = (props) function under 'ExpenseFilter.js' file
+
+ii. 
+Now we will get 'event.target.value' value directly
+------
+props.onChnageFilter(event.target.value);
+------
+
+FULL CODE:
+ExpenseFilter.JS
+
+-------------------------
+
+import React from 'react';
+import  './ExpenseFilter.css';
+
+const ExpenseFilter = (props) =>{
+
+    const dropdownChangeHandler = (event) => {
+        props.onChnageFilter(event.target.value);
+    }
+
+  return(
+        <div>
+            <select onChange={dropdownChangeHandler}>
+                <option value='2022'>2022</option>
+                <option value='2021'>2021</option>
+                <option value='2020'>2020</option>
+                <option value='2019'>2019</option>
+                <option value='2018'>2018</option>
+            </select>
+        </div>
+  );
+};
+export default ExpenseFilter;
+
+
+-------------------------
+
+Now we can see in Console the selected value.
+
+=========================
+Default Vlue for Dropdown
+=========================
+For Default valu we need to help about 'useState' so
+In 'Expenses.js' we call 'useState'
+
+-----
+import React, {useState} from 'react';
+-----
+
+Now we set a default valu for the dropdown
+-----
+const [filteredYear, setFilteredYear] = useState('2020');
+-----
+
+FULL CODE
+Expenses.js
+---------------------------
+
+import React, {useState} from 'react';
+import ExpenseItem from './ExpenseItems';
+import ExpenseFilter from './ExpenseFilter';
+import Card from '../UI/Card';
+import  './Expenses.css';
+function Expenses(props){
+
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    /* Filter CODE  */
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear);
+        console.log('Expenses.js');
+        console.log(selectedYear);
+    }
+
+    return (
+        <div>
+            <Card className="expenses">
+            <ExpenseFilter selected={filteredYear} onChnageFilter={filterChangeHandler} />
+            <ExpenseItem 
+            title={props.items[0].title} 
+            amount={props.items[0].amount} 
+            date={props.items[0].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[1].title} 
+            amount={props.items[1].amount} 
+            date={props.items[1].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[2].title} 
+            amount={props.items[2].amount} 
+            date={props.items[2].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[3].title} 
+            amount={props.items[3].amount} 
+            date={props.items[3].date}>
+            </ExpenseItem>
+        </Card>
+    </div>
+    );
+}
+export default Expenses;
+
+---------------------------
+
+Note:
+1. 
+const [filteredYear, setFilteredYear] = useState('2020');
+
+Here in the First option 'filteredYear' we set 2020 and also we pass this selected value
+in 'ExpenseFilter.js' using a props called 'selected' via <ExpenseFilter /> component
+-------
+<ExpenseFilter selected={filteredYear} onChnageFilter={filterChangeHandler} />
+-------
+The second option 'setFilteredYear' now ready to asign new select value.
+which is asign via function called 'filterChangeHandler'
+
+------
+const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear); 
+    console.log(selectedYear);
+ }
+------
+
+------------------------------
+
+Finally in 'ExpenseFilter.js' <select/> field get the default value via the
+props 'selected' in the 
+
+-----
+
+<select value={props.selected} onChange={dropdownChangeHandler}>
+   <option value='2022'>2022</option>
+   <option value='2021'>2021</option>
+   <option value='2020'>2020</option>
+   <option value='2019'>2019</option>
+   <option value='2018'>2018</option>
+</select>
+
+-----
+ 
+FULL CODE
+'ExpenseFilter.js'
+-----------------------------
+
+import React from 'react';
+import  './ExpenseFilter.css';
+
+const ExpenseFilter = (props) =>{
+
+    const dropdownChangeHandler = (event) => {
+        props.onChnageFilter(event.target.value);
+    }
+
+  return(
+        <div>
+            <select value={props.selected} onChange={dropdownChangeHandler}>
+                <option value='2022'>2022</option>
+                <option value='2021'>2021</option>
+                <option value='2020'>2020</option>
+                <option value='2019'>2019</option>
+                <option value='2018'>2018</option>
+            </select>
+        </div>
+  );
+};
+export default ExpenseFilter;
+
+
+-----------------------------
