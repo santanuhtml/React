@@ -16,7 +16,7 @@ then it is called Vanilla JavaScript.
 
 
 =========================
-2. What isComponents?
+2. What is Components?
 =========================
 Component is Reusable building blocks in your user interface.
 Simply if we have same item with different data, which is just reapting.
