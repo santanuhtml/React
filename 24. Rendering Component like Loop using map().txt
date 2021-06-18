@@ -1,0 +1,141 @@
+24. Rendering Component like Loop using map()
+
+
+.Expenses.js
+-----------------------------------------
+
+import React, {useState} from 'react';
+import ExpenseItem from './ExpenseItems';
+import ExpenseFilter from './ExpenseFilter';
+import Card from '../UI/Card';
+import  './Expenses.css';
+function Expenses(props){
+
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    /* Filter CODE  */
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear);
+        console.log('Expenses.js');
+        console.log(selectedYear);
+    }
+
+    return (
+        <div>
+            <Card className="expenses">
+            <ExpenseFilter selected={filteredYear} onChnageFilter={filterChangeHandler} />
+            <ExpenseItem 
+            title={props.items[0].title} 
+            amount={props.items[0].amount} 
+            date={props.items[0].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[1].title} 
+            amount={props.items[1].amount} 
+            date={props.items[1].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[2].title} 
+            amount={props.items[2].amount} 
+            date={props.items[2].date}>
+            </ExpenseItem>
+            <ExpenseItem 
+            title={props.items[3].title} 
+            amount={props.items[3].amount} 
+            date={props.items[3].date}>
+            </ExpenseItem>
+        </Card>
+    </div>
+    );
+}
+export default Expenses;
+
+-----------------------------------------
+Here we Render <ExpenseFilter /> conponent using 
+map() function
+
+We replace entair this code
+
+-------------
+<ExpenseItem 
+  title={props.items[0].title} 
+  amount={props.items[0].amount} 
+  date={props.items[0].date}>
+</ExpenseItem>
+<ExpenseItem 
+  title={props.items[0].title} 
+  amount={props.items[0].amount} 
+  date={props.items[0].date}>
+</ExpenseItem>
+<ExpenseItem 
+  title={props.items[0].title} 
+  amount={props.items[0].amount} 
+  date={props.items[0].date}>
+</ExpenseItem>
+-------------
+
+by this code:
+
+-------------
+
+{props.items.map(expenseNew => 
+       <ExpenseItem 
+         title={expenseNew.title} 
+         amount={expenseNew.amount} 
+         date={expenseNew.date} 
+       />
+)}
+
+------------------
+
+Full CODE
+
+------------------
+
+import React, {useState} from 'react';
+import ExpenseItem from './ExpenseItems';
+import ExpenseFilter from './ExpenseFilter';
+import Card from '../UI/Card';
+import  './Expenses.css';
+function Expenses(props){
+
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    /* Filter CODE  */
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear);
+        console.log('Expenses.js');
+        console.log(selectedYear);
+    }
+
+    return (
+        <div>
+            <Card className="expenses">
+            <ExpenseFilter selected={filteredYear} onChnageFilter={filterChangeHandler} />
+
+            {props.items.map(expenseNew => 
+                <ExpenseItem 
+                    title={expenseNew.title} 
+                    amount={expenseNew.amount} 
+                    date={expenseNew.date} 
+                />
+            )}
+
+
+            
+        </Card>
+    </div>
+    );
+}
+export default Expenses;
+
+------------------
+After Run it runs properly but get some errors in
+console and we will also fixed it.
+
+
+
+
+
+
+
